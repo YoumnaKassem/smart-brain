@@ -1,0 +1,17 @@
+{
+  "name": "backendfaceapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.17.1",
+    "knex": "^0.21.18",
+    "pg": "^8.5.1"
+  }
+}
