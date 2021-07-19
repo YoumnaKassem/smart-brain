@@ -23,5 +23,5 @@ workflows:
     jobs:
       - welcome/run
       - sayHi:
-        - requires:
+          requires:
             - sayBye
