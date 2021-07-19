@@ -18,4 +18,5 @@ workflows:
     jobs:
       - welcome/run
       - sayHi:
-        - requires: [welcome/run]
+        - requires:
+            - welcome/run
