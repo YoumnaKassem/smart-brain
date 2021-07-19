@@ -10,7 +10,12 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo 'lolololo' 
+      - run: echo 'Hi'
+  sayBye:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo 'bye' 
 workflows:
   # Name the workflow "welcome"
   welcome:
@@ -19,4 +24,4 @@ workflows:
       - welcome/run
       - sayHi:
         - requires:
-            - welcome/run
+            - sayBye
