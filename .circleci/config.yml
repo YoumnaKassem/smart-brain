@@ -6,22 +6,28 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 jobs:
-  sayHi:
+  saveHi:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo $MY_ENV_VAL
-  sayBye:
+      - run: echo "Hi" > ~/output.txt
+      - persist_to_workspace:
+        root: ~/
+        paths: 
+          - output.txt
+  printHi:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo << pipeline.id >>
+      - attach_workspace:
+        root: ~/
+      - run: cat ~/output.txt
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - sayHi:
-          requires:
-            - sayBye
-      - sayBye
+      - saveHi:
+      - printHi:
+        requires:
+            - saveHi
